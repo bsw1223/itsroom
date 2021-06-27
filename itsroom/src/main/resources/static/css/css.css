@@ -1,0 +1,25 @@
+.container {
+    width: 1280px;
+    margin: 0 auto;
+}
+.container1 {
+    width: 1280px;
+    height: 512px;
+    margin: 0 auto;
+}
+.container1 > h1{
+    text-align: center;
+}
+.center {
+    font-size: 2rem;
+}
+.marlef400{
+    margin-left: 400px;
+}
+.martop400{
+    margin-top: 400px;
+}
+
+.martop400 span{
+    margin-left: 1100px;
+}

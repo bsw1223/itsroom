@@ -6,9 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class itsroomController {
 	
-	@GetMapping("itsroom")
-	public String itsroomController() {
+	@GetMapping("/itsroom")
+	public String index() {
 
 		return "itsroom";
+	}
+
+	@GetMapping("/itsroom2")
+	public String secondPage() {
+
+		return "itsroom2";
 	}
 }
