@@ -5,6 +5,9 @@ spring:
     prefix: classpath:templates/itsroom/  #접두어 classpath:templates/ 가 default
     suffix: .html
     cache: false #개발 시 새로고침하면 적용
-
-
-
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mrkim
+    username: postgres
+    password: mrkim
