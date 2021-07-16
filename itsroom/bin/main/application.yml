@@ -1,0 +1,25 @@
+server:
+  port: 80
+spring:
+  thymeleaf:
+    prefix: classpath:templates/itsroom/  #접두어 classpath:templates/ 가 default
+    suffix: .html
+    cache: false #개발 시 새로고침하면 적용
+  jpa:
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+       
+    show-sql: true
+          
+    
+  datasource:
+    username: kimbang
+    password: kimbang
+    url: jdbc:postgresql://localhost:5432/postgres
+    sql-script-encoding: utf-8
+    
+    
+  main:
+    allow-bean-definition-overriding: true
+
