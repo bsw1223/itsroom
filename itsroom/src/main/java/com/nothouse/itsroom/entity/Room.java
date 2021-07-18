@@ -19,11 +19,9 @@ public class Room implements Serializable {
 	@Column( name = "ROOM_NAME" )
 	private String roomName;  
 	
-	@Id
 	@Column( name = "SCRAP_COUNT" )
 	private String scrapCount;
 	
-	@Id
 	@Column( name = "BUILD_YEAR" )
 	private String buildYear;
 
