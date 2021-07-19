@@ -12,4 +12,9 @@ public class itsroomController {
         model.addAttribute("data","itsroom");
 		return "itsroom";
 	}
+
+	@GetMapping("itsroom2")
+	public String itsroom2(Model model) {
+		return "itsroom2";
+	}
 }
