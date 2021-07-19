@@ -3,22 +3,27 @@ package com.nothouse.itsroom.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table( name = "ITSROOMUSER" )
-public class ItsrommUser implements Serializable {
+public class ItsroomUser implements Serializable {
+	
+	@EmbeddedId
+    private ItsroomUserPK isroomUserPK;
 	
 	@Id
 	@Column( name = "E_MAIL" )
     private String eMail;
 	
-    @Id
+	@Id
     @Column( name = "CONNECTION_PATH" )
 	private String connectionPath;
 
+    
 	public String geteMail() {
 		return eMail;
 	}
@@ -34,5 +39,5 @@ public class ItsrommUser implements Serializable {
 	public void setConnectionPath(String connectionPath) {
 		this.connectionPath = connectionPath;
 	}
-
+   
 }
