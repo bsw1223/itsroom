@@ -19,23 +19,18 @@ public class RoomSell implements Serializable {
 	@Column( name = "ROOM_NAME" )
     private String roomName;       
 	
-	@Id
 	@Column( name = "CONTRACT_DATE" )
     private String contractDate;   
 	
-	@Id
 	@Column( name = "DEPOSIT" )
     private String deposit;         
 	
-	@Id
 	@Column( name = "MONTHLY_RENT" )
     private String monthlyRent;    
 	
-	@Id
 	@Column( name = "PRIVATE_AREA" )
     private String privateArea;    
 	
-	@Id
 	@Column( name = "FLOOR" )
     private String floor;
 

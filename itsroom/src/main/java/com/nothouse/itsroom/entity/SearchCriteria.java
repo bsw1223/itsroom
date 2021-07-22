@@ -11,43 +11,33 @@ import javax.persistence.Table;
 @Table( name = "SEARCH_CRITERIA" )
 public class SearchCriteria implements Serializable {
 	
-	@Id
 	@Column( name = "ADDRESS1" )
 	private String address1;           //'주소1'
 	
-	@Id
 	@Column( name = "ADDRESS2" )
     private String address2;           //'주소2'
 	
-	@Id
 	@Column( name = "ADDRESS_DETAIL" )
     private String addressDetail;      //'상세주소'
 	
-	@Id
 	@Column( name = "PRIVATE_AREA" )
     private String privateArea;        //'전용면적'
 	
-	@Id
 	@Column( name = "FLOOR" )
     private String floor;              //'층'
 	
-	@Id
 	@Column( name = "DEPOSIT" )
     private String deposit;            //'보증금'   
 	
-	@Id
 	@Column( name = "MONTHLY_RENT" )
     private String monthlyRent;        //'월세'     
 	
-	@Id
 	@Column( name = "SUBWAY_LINE" )
     private String subwayLine;         //'지하철호선'  
 	
-	@Id
 	@Column( name = "SUBWAY_STATION" )
     private String subwayStation;      //'지하철역이름'     
 	
-	@Id
 	@Column( name = "SUBWAY_DISTANCE" )
     private String subwayDistance;     //'지하철거리'     
 	
@@ -62,6 +52,7 @@ public class SearchCriteria implements Serializable {
 	@Id
 	@Column( name = "E_MAIL" )
     private String eMail;              //'사용자이메일'     
+	
 	
     public String getAddress1() {
 		return address1;

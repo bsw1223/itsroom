@@ -19,7 +19,6 @@ public class Scrap implements Serializable {
 	@Column( name = "ROOM_NAME")
     private String roomName;   
 	
-	@Id
 	@Column( name = "SCRAP_TIME")
     private String scrapTime;  
 	
