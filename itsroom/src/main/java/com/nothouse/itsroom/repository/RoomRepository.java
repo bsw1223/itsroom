@@ -13,9 +13,9 @@ public interface RoomRepository extends CrudRepository<Room, Long>{
 	
 	void save(RoomPK roomPK);                       //room ÀúÀå
                                                     
-	List<Room> findByJibun(String jibun);           //Áö¹øÀ¸·Î roolist ¼¿·¢Æ®
+	List<Room> findByRoomName(String getRoomName);  //Áö¹øÀ¸·Î roomlist ¼¿·¢Æ®
 	
-	List<Room> findByroomName(String roomName);     //Áö¹øÀ¸·Î roolist ¼¿·¢Æ®
+	List<Room> findByroomName(String roomName);     //Áö¹øÀ¸·Î roomlist ¼¿·¢Æ®
 
 	@Query("select r from Room r where roomPK=:roomPK")
 	Room findByPK(@Param("roomPK") RoomPK roomPK);  //pk·Î room ¼¿·¢Æ®
