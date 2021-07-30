@@ -3,6 +3,7 @@ package com.nothouse.itsroom.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,13 +11,14 @@ import javax.persistence.Table;
 @Entity
 @Table( name = "ROOM" )
 public class Room implements Serializable {
+
+	@EmbeddedId
+	private RoomPK roomPK;
 	
-	@Id
-	@Column( name = "JIBUN" )
+	@Column( name = "JIBUN" ,insertable=false, updatable=false)
 	private String jibun;      
 	
-	@Id
-	@Column( name = "ROOM_NAME" )
+	@Column( name = "ROOM_NAME" ,insertable=false, updatable=false )
 	private String roomName;  
 	
 	@Column( name = "SCRAP_COUNT" )
@@ -24,6 +26,15 @@ public class Room implements Serializable {
 	
 	@Column( name = "BUILD_YEAR" )
 	private String buildYear;
+
+    	
+	public RoomPK getRoomPK() {
+		return roomPK;
+	}
+
+	public void setRoomPK(RoomPK roomPK) {
+		this.roomPK = roomPK;
+	}
 
 	public String getJibun() {
 		return jibun;
