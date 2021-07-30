@@ -11,12 +11,15 @@ import com.nothouse.itsroom.entity.RoomPK;
 
 public interface RoomRepository extends CrudRepository<Room, Long>{
 	
-	List<Room> findByJibun(String jibun);
+	void save(RoomPK roomPK);                       //room ÀúÀå
+                                                    
+	List<Room> findByJibun(String jibun);           //Áö¹øÀ¸·Î roolist ¼¿·¢Æ®
 	
-	@Query("select r from Room r where roomPK=:roomPK")
-	String findByJibunAndRoomName(@Param("roomPK") RoomPK roomPK);
+	List<Room> findByroomName(String roomName);     //Áö¹øÀ¸·Î roolist ¼¿·¢Æ®
 
-	void save(RoomPK roomPK);
+	@Query("select r from Room r where roomPK=:roomPK")
+	Room findByPK(@Param("roomPK") RoomPK roomPK);  //pk·Î room ¼¿·¢Æ®
+
 	
 
 

@@ -22,26 +22,20 @@ public class itsroomController {
 	
 	@GetMapping("itsroom")
 	public String itsroomController(Model model) {
-		//ROOM테이블 INSERT 예시
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
-		EntityManager em         = emf.createEntityManager(); //엔티티매니저
-		EntityTransaction tx     = em.getTransaction();       //트랜젝션
-		tx.begin();                                           //트랜젝션 시작
-				
-		Room room     = new Room();     //room entity      
-		RoomPK roomPK = new RoomPK();   //roomPK
-		
-		roomPK.setJibun("정릉로");         
-		roomPK.setRoomName("중앙하이츠");    
-		room.setRoomPK(roomPK);         //PK SET
-
-		em.persist(room);
-		
-		tx.commit();  //트랜젝션 닫기
-		em.close();   //엔티티매니저 닫기
-		emf.close();  //엔티티매니저 팩토리 닫기
-		
-        model.addAttribute("data","itsroom");
+        RoomPK roomPK = new RoomPK();
+        roomPK.setJibun("정릉로30");
+        roomPK.setRoomName("중앙하이츠");
+        roomService.createRoom(roomPK); //room 저장
+        
+        Room selRoom = roomService.selectRoom(roomPK); //셀렉트 room
+        System.out.println("selRoom getJibun    :::   " + selRoom.getJibun()   .toString());
+        System.out.println("selRoom getRoomName :::   " + selRoom.getRoomName().toString());
+        
+        String getJibun    = selRoom.getJibun()   .toString();
+        String getRoomName = selRoom.getRoomName().toString();
+        
+        model.addAttribute("data",getRoomName);
 		return "itsroom";
 	}
 }
+
