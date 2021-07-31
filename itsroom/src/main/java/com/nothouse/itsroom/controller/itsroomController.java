@@ -42,5 +42,10 @@ public class itsroomController {
         model.addAttribute("data",getRoomName);
 		return "itsroom";
 	}
+
+	@GetMapping("itsroom2")
+	public String itsroom2(Model model) {
+		return "itsroom2";
+	}
 }
 
