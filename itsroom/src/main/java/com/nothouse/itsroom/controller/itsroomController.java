@@ -28,7 +28,7 @@ public class itsroomController {
         System.out.println("selRoom getJibun    :::   " + selRoom.getJibun().toString());
         System.out.println("selRoom getRoomName :::   " + selRoom.getRoomName().toString());
         
-        List<Room> listRoom = roomService.selectRoomList(selRoom.getRoomName().toString()); //룸이름으로 리스트 셀렉트
+        List<Room> listRoom = roomService.selByRoomName(selRoom.getRoomName().toString()); //룸이름으로 리스트 셀렉트
         
         System.out.println("listRoom size ::: " + listRoom.size());
         for(int i = 0; i < listRoom.size(); i++) {
