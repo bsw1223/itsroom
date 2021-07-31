@@ -36,16 +36,16 @@ public class RoomService {
             System.out.println("createRoom error :::  "+e.getMessage().toString());
 		}
 		em.close();   //엔티티매니저 닫기
-        
     }
-  //param : RoomPK, ROOM테이블 select
+
+    //param : RoomPK, ROOM테이블 select
     public Room selectRoom(RoomPK roomPK) {
 		EntityManager em         = emf.createEntityManager(); //엔티티매니저
 		EntityTransaction tx     = em.getTransaction();       //트랜젝션
         Room room = new Room();
 		try {
         	tx.begin();     
-        	room = roomRepository.findByPK(roomPK);
+        	room = roomRepository.selRoomByPK(roomPK);
         	tx.commit();  //트랜젝션 닫기
         }catch (Exception e) {
         	System.out.println("selectRoom error :::  "+e.getMessage().toString());
@@ -53,8 +53,8 @@ public class RoomService {
 		em.close();   //엔티티매니저 닫기
 		
         return room;
-    
     }
+    
     //param : roomName, ROOM테이블 select list
     public List<Room> selByRoomName(String getRoomName) {
     	EntityManager em         = emf.createEntityManager(); //엔티티매니저
@@ -72,6 +72,7 @@ public class RoomService {
     	
     	return roomList;
     }
+    
     //param : jibun, ROOM테이블 select list
     public List<Room> selByJibun(String jibun) {
     	EntityManager em         = emf.createEntityManager(); //엔티티매니저
