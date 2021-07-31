@@ -18,6 +18,7 @@ import com.nothouse.itsroom.repository.RoomRepository;
 
 @Service
 public class RoomService {
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
 
 	@Autowired
 	RoomRepository roomRepository;
@@ -25,7 +26,6 @@ public class RoomService {
 	//ROOM테이블 INSERT
     public void createRoom(RoomPK roomPK) {
 		//ROOM테이블 INSERT
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
 		EntityManager em         = emf.createEntityManager(); //엔티티매니저
 		EntityTransaction tx     = em.getTransaction();       //트랜젝션
 		tx.begin();                                           //트랜젝션 시작
@@ -36,13 +36,13 @@ public class RoomService {
 		em.persist(room);
 		tx.commit();  //트랜젝션 닫기
 		em.close();   //엔티티매니저 닫기
-		emf.close();  //엔티티매니저 팩토리 닫기
+//		emf.close();  //엔티티매니저 팩토리 닫기
 //        System.out.println("roomRepository :::: "+roomRepository.findByJibunAndRoomName(roomPK));	
         
     }
   //ROOM테이블 select
     public Room selectRoom(RoomPK roomPK) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
 		EntityManager em         = emf.createEntityManager(); //엔티티매니저
 		EntityTransaction tx     = em.getTransaction();       //트랜젝션
 		tx.begin();     
@@ -53,7 +53,7 @@ public class RoomService {
 		
 		tx.commit();  //트랜젝션 닫기
 		em.close();   //엔티티매니저 닫기
-		emf.close();  //엔티티매니저 팩토리 닫기
+//		emf.close();  //엔티티매니저 팩토리 닫기
 		
         return room;
     

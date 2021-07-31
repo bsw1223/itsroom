@@ -20,19 +20,20 @@ public class itsroomController {
 	@GetMapping("itsroom")
 	public String itsroomController(Model model) {
         RoomPK roomPK = new RoomPK();
-        roomPK.setJibun("Á¤¸ª·Î34");
+        roomPK.setJibun("Á¤¸ª·Î36");
         roomPK.setRoomName("Áß¾ÓÇÏÀÌÃ÷");
         roomService.createRoom(roomPK);                //room save
         
         Room selRoom = roomService.selectRoom(roomPK); //¼¿·ºÆ® room
-        System.out.println("selRoom getJibun    :::   " + selRoom.getJibun()   .toString());
+        System.out.println("selRoom getJibun    :::   " + selRoom.getJibun().toString());
         System.out.println("selRoom getRoomName :::   " + selRoom.getRoomName().toString());
         
-        List<Room> listRoom = roomService.selectRoomList(selRoom.getRoomName().toString()); //·ëÀÌ¸§À¸·Î ¸®½ºÆ® °Ë»ö
+        List<Room> listRoom = roomService.selectRoomList(selRoom.getRoomName().toString()); //·ëÀÌ¸§À¸·Î ¸®½ºÆ® ¼¿·ºÆ®
         
         System.out.println("listRoom size ::: " + listRoom.size());
         for(int i = 0; i < listRoom.size(); i++) {
-            System.out.println("selRoomList :::   " + listRoom.get(i).getRoomName().toString());
+            System.out.println("selRoomList getRoomName:::   " + listRoom.get(i).getRoomName().toString());
+            System.out.println("selRoomList getJibun   :::   " + listRoom.get(i).getJibun().toString());
         }
         
         String getJibun    = selRoom.getJibun()   .toString();
