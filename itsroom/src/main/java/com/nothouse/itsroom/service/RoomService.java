@@ -10,8 +10,6 @@ import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.nothouse.itsroom.entity.ItsroomUser;
-import com.nothouse.itsroom.entity.ItsroomUserPK;
 import com.nothouse.itsroom.entity.Room;
 import com.nothouse.itsroom.entity.RoomPK;
 import com.nothouse.itsroom.repository.RoomRepository;
@@ -23,58 +21,74 @@ public class RoomService {
 	@Autowired
 	RoomRepository roomRepository;
 	
-	//ROOM테이블 INSERT
+	//param : RoomPK, ROOM테이블 INSERT
     public void createRoom(RoomPK roomPK) {
 		//ROOM테이블 INSERT
 		EntityManager em         = emf.createEntityManager(); //엔티티매니저
 		EntityTransaction tx     = em.getTransaction();       //트랜젝션
-		tx.begin();                                           //트랜젝션 시작
-				
-		Room room     = new Room();     //room entity      
-		room.setRoomPK(roomPK);         //PK SET
-
-		em.persist(room);
-		tx.commit();  //트랜젝션 닫기
+		try {
+			tx.begin();                                           //트랜젝션 시작
+		    Room room     = new Room();     //room entity      
+		    room.setRoomPK(roomPK);         //PK SET
+		    em.persist(room);
+		    tx.commit();  //트랜젝션 닫기
+		}catch (Exception e) {
+            System.out.println("createRoom error :::  "+e.getMessage().toString());
+		}
 		em.close();   //엔티티매니저 닫기
-//		emf.close();  //엔티티매니저 팩토리 닫기
-//        System.out.println("roomRepository :::: "+roomRepository.findByJibunAndRoomName(roomPK));	
-        
     }
-  //ROOM테이블 select
+
+    //param : RoomPK, ROOM테이블 select
     public Room selectRoom(RoomPK roomPK) {
-//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
 		EntityManager em         = emf.createEntityManager(); //엔티티매니저
 		EntityTransaction tx     = em.getTransaction();       //트랜젝션
-		tx.begin();     
-        
-		Room room = roomRepository.findByPK(roomPK);
-        
-//		em.persist(room);
-		
-		tx.commit();  //트랜젝션 닫기
+        Room room = new Room();
+		try {
+        	tx.begin();     
+        	room = roomRepository.selRoomByPK(roomPK);
+        	tx.commit();  //트랜젝션 닫기
+        }catch (Exception e) {
+        	System.out.println("selectRoom error :::  "+e.getMessage().toString());
+		}
 		em.close();   //엔티티매니저 닫기
-//		emf.close();  //엔티티매니저 팩토리 닫기
 		
         return room;
-    
     }
-    //ROOM테이블 select
-    public List<Room> selectRoomList(String getRoomName) {
-    	EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //엔티티매니저 팩토리
+    
+    //param : roomName, ROOM테이블 select list
+    public List<Room> selByRoomName(String getRoomName) {
     	EntityManager em         = emf.createEntityManager(); //엔티티매니저
     	EntityTransaction tx     = em.getTransaction();       //트랜젝션
-    	tx.begin();     
+    	List<Room> roomList      = null;
+    	try {
+    	    tx.begin();   //트랜젝션 시작  
+    	    roomList = roomRepository.selByRoomName(getRoomName);
+    	    tx.commit();  //트랜젝션 닫기
+    	}catch (Exception e) {
+			System.out.println("selectRoomList error :::  "+e.getMessage().toString());
+		}
     	
-    	List<Room> roomList = roomRepository.findByroomName(getRoomName);
-    	
-//		em.persist(room);
-    	
-    	tx.commit();  //트랜젝션 닫기
     	em.close();   //엔티티매니저 닫기
-    	emf.close();  //엔티티매니저 팩토리 닫기
     	
     	return roomList;
+    }
+    
+    //param : jibun, ROOM테이블 select list
+    public List<Room> selByJibun(String jibun) {
+    	EntityManager em         = emf.createEntityManager(); //엔티티매니저
+    	EntityTransaction tx     = em.getTransaction();       //트랜젝션
+    	List<Room> roomList      = null;
+    	try {
+    		tx.begin();   //트랜젝션 시작  
+    		roomList = roomRepository.selByJibun(jibun);
+    		tx.commit();  //트랜젝션 닫기
+    	}catch (Exception e) {
+    		System.out.println("selectRoomList error :::  "+e.getMessage().toString());
+    	}
     	
+    	em.close();   //엔티티매니저 닫기
+    	
+    	return roomList;
     }
     
 }

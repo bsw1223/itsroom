@@ -16,4 +16,21 @@ public class ItsroomUserPK implements Serializable {
     @Column( name = "CONNECTION_PATH" )
 	private String connectionPath;
 
+	public String geteMail() {
+		return eMail;
+	}
+
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
+	}
+
+	public String getConnectionPath() {
+		return connectionPath;
+	}
+
+	public void setConnectionPath(String connectionPath) {
+		this.connectionPath = connectionPath;
+	}
+
+    
 }

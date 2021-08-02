@@ -19,12 +19,13 @@ public class Scrap implements Serializable {
 	@Column( name = "ROOM_NAME")
     private String roomName;   
 	
+	@Id
+	@Column( name = "EMAIL")
+	private String email;
+
 	@Column( name = "SCRAP_TIME")
     private String scrapTime;  
 	
-	@Id
-	@Column( name = "EMAIL")
-    private String email;
 	
 	public String getJibun() {
 		return jibun;
