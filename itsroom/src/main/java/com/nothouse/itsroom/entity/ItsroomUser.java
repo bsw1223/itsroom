@@ -16,7 +16,7 @@ public class ItsroomUser implements Serializable {
     private ItsroomUserPK isroomUserPK;
 	
 	@Column( name = "E_MAIL" ,insertable=false, updatable=false)
-    private String eMail;
+    private String EMail;  /*eMail로 하면 에러남*/
 	
     @Column( name = "CONNECTION_PATH" ,insertable=false, updatable=false )
 	private String connectionPath;
@@ -30,11 +30,11 @@ public class ItsroomUser implements Serializable {
 	}
 
 	public String geteMail() {
-		return eMail;
+		return EMail;
 	}
 
 	public void seteMail(String eMail) {
-		this.eMail = eMail;
+		this.EMail = eMail;
 	}
 
 	public String getConnectionPath() {

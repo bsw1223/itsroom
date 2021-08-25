@@ -31,7 +31,7 @@
          */
         var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
         var options = { //지도를 생성할 때 필요한 기본 옵션
-            center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+            center: new kakao.maps.LatLng(37.5642135, 127.0016985), //지도의 중심좌표.
             level: 3 //지도의 레벨(확대, 축소 정도)
         };
 
@@ -94,6 +94,50 @@
             // 지도 중심좌표를 접속위치로 변경합니다
             map.setCenter(locPosition);
         }
+
+        var map = new kakao.maps.Map(container, options),
+manager = new kakao.maps.drawing.DrawingManager({
+    map: map,
+    drawingMode: [
+        kakao.maps.drawing.OverlayType.MARKER
+    ],
+    markerOptions: {
+        draggable: true,
+        removable: true,
+        markerImages: [
+            null, // API에서 제공하는 기본 마커 이미지
+            {
+                src: 'https://t1.daumcdn.net/localimg/localimages/07/2009/map/icon/ico_mn_13.png',
+                width: 31,
+                height: 35,
+                shape: 'rect',
+                coords: '0,0,31,35',
+                hoverImage: {
+                    src: 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_normal.png',
+                    width: 33,
+                    height: 36,
+                    offsetX: 12,
+                    offsetY: 36,
+                    spriteWidth: 644,
+                    spriteHeight: 946,
+                    spriteOriginX: 10,
+                    spriteOriginY: 10
+                },
+                dragImage: {
+                    src: 'https://t1.daumcdn.net/localimg/localimages/07/2012/attach/pc_img/ico_comm.png',
+                    width : 20, // 마커 크기
+                    height : 20, // 마커 크기
+                    offsetX : 10, // 지도에 고정시킬 이미지 내 위치 좌표
+                    offsetY : 20, // 지도에 고정시킬 이미지 내 위치 좌표
+                    spriteWidth : 118, // 이미지 전체 크기
+                    spriteHeight : 111, // 이미지 전체 크기
+                    spriteOriginX : 0, // 이미지 중 마커로 사용할 위치
+                    spriteOriginY : 90 // 이미지 중 마커로 사용할 위치
+                }
+            }
+        ]
+    }
+});
     </script>
 </body>
 

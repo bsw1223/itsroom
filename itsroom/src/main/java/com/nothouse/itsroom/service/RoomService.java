@@ -16,77 +16,77 @@ import com.nothouse.itsroom.repository.RoomRepository;
 
 @Service
 public class RoomService {
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //¿£Æ¼Æ¼¸Å´ÏÀú ÆÑÅä¸®
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //ì—”í‹°í‹°ë§¤ë‹ˆì € íŒ©í† ë¦¬
 
 	@Autowired
 	RoomRepository roomRepository;
 	
-	//param : RoomPK, ROOMÅ×ÀÌºí INSERT
+	//param : RoomPK, ROOMí…Œì´ë¸” INSERT
     public void createRoom(RoomPK roomPK) {
-		//ROOMÅ×ÀÌºí INSERT
-		EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-		EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+		//ROOMí…Œì´ë¸” INSERT
+		EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+		EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
 		try {
-			tx.begin();                                           //Æ®·£Á§¼Ç ½ÃÀÛ
+			tx.begin();                                           //íŠ¸ëœì ì…˜ ì‹œì‘
 		    Room room     = new Room();     //room entity      
 		    room.setRoomPK(roomPK);         //PK SET
 		    em.persist(room);
-		    tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+		    tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
 		}catch (Exception e) {
             System.out.println("createRoom error :::  "+e.getMessage().toString());
 		}
-		em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+		em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
     }
 
-    //param : RoomPK, ROOMÅ×ÀÌºí select
+    //param : RoomPK, ROOMí…Œì´ë¸” select
     public Room selectRoom(RoomPK roomPK) {
-		EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-		EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+		EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+		EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
         Room room = new Room();
 		try {
         	tx.begin();     
-        	room = roomRepository.selRoomByPK(roomPK);
-        	tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+        	room = roomRepository.findRoom(roomPK);
+        	tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
         }catch (Exception e) {
         	System.out.println("selectRoom error :::  "+e.getMessage().toString());
 		}
-		em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+		em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
 		
         return room;
     }
     
-    //param : roomName, ROOMÅ×ÀÌºí select list
+    //param : roomName, ROOMí…Œì´ë¸” select list
     public List<Room> selByRoomName(String getRoomName) {
-    	EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-    	EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+    	EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+    	EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
     	List<Room> roomList      = null;
     	try {
-    	    tx.begin();   //Æ®·£Á§¼Ç ½ÃÀÛ  
-    	    roomList = roomRepository.selByRoomName(getRoomName);
-    	    tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+    	    tx.begin();   //íŠ¸ëœì ì…˜ ì‹œì‘  
+    	    roomList = roomRepository.findByroomName(getRoomName);
+    	    tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
     	}catch (Exception e) {
 			System.out.println("selectRoomList error :::  "+e.getMessage().toString());
 		}
     	
-    	em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+    	em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
     	
     	return roomList;
     }
     
-    //param : jibun, ROOMÅ×ÀÌºí select list
+    //param : jibun, ROOMí…Œì´ë¸” select list
     public List<Room> selByJibun(String jibun) {
-    	EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-    	EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+    	EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+    	EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
     	List<Room> roomList      = null;
     	try {
-    		tx.begin();   //Æ®·£Á§¼Ç ½ÃÀÛ  
-    		roomList = roomRepository.selByJibun(jibun);
-    		tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+    		tx.begin();   //íŠ¸ëœì ì…˜ ì‹œì‘  
+    		roomList = roomRepository.findByJibun(jibun);
+    		tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
     	}catch (Exception e) {
     		System.out.println("selectRoomList error :::  "+e.getMessage().toString());
     	}
     	
-    	em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+    	em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
     	
     	return roomList;
     }

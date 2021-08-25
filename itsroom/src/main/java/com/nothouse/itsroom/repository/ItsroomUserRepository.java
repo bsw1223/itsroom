@@ -11,13 +11,13 @@ import com.nothouse.itsroom.entity.ItsroomUserPK;
 import com.nothouse.itsroom.entity.Room;
 import com.nothouse.itsroom.entity.RoomPK;
 
-public interface ItsroomUserRepository extends CrudRepository<Room, Long>{
+public interface ItsroomUserRepository extends CrudRepository<ItsroomUser, Long>{
 	
-	List<ItsroomUser> selByEmail(String eMail);                            //eMail ItsroomUserList ¼¿·¢Æ®
+	List<ItsroomUser> findByEMail(String eMail);                            //eMail ItsroomUserList ì…€ëž™íŠ¸
 	
-	List<ItsroomUser> selByConnection(String connectionPath);              //roomNameÀ¸·Î ItsroomUserList ¼¿·¢Æ®
+	List<ItsroomUser> findByConnectionPath(String connectionPath);              //roomNameìœ¼ë¡œ ItsroomUserList ì…€ëž™íŠ¸
 
 	@Query("select r from ItsroomUser r where isroomUserPK=:isroomUserPK")
-	ItsroomUser selItsroomUserByPK(@Param("isroomUserPK") ItsroomUserPK isroomUserPK); //pk·Î ItsroomUser ¼¿·¢Æ®
+	ItsroomUser finItsroomUser(@Param("isroomUserPK") ItsroomUserPK isroomUserPK); //pkë¡œ ItsroomUser ì…€ëž™íŠ¸
 
 }
