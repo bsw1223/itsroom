@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.nothouse.itsroom.entity.Room;
 import com.nothouse.itsroom.entity.RoomPK;
+//import com.nothouse.itsroom.service.RoomService;
 import com.nothouse.itsroom.service.RoomService;
 
 @Controller
@@ -20,15 +21,15 @@ public class itsroomController {
 	@GetMapping("itsroom")
 	public String itsroomController(Model model) {
         RoomPK roomPK = new RoomPK();
-        roomPK.setJibun("Á¤¸ª·Î36");
-        roomPK.setRoomName("Áß¾ÓÇÏÀÌÃ÷");
+        roomPK.setJibun("ì •ë¦‰ë¡œ36");
+        roomPK.setRoomName("ì¤‘ì•™í•˜ì´ì¸ ");
         roomService.createRoom(roomPK);                //room save
         
-        Room selRoom = roomService.selectRoom(roomPK); //¼¿·ºÆ® room
+        Room selRoom = roomService.selectRoom(roomPK); //ì…€ë ‰íŠ¸ room
         System.out.println("selRoom getJibun    :::   " + selRoom.getJibun().toString());
         System.out.println("selRoom getRoomName :::   " + selRoom.getRoomName().toString());
         
-        List<Room> listRoom = roomService.selByRoomName(selRoom.getRoomName().toString()); //·ëÀÌ¸§À¸·Î ¸®½ºÆ® ¼¿·ºÆ®
+        List<Room> listRoom = roomService.selByRoomName(selRoom.getRoomName().toString()); //ë£¸ì´ë¦„ìœ¼ë¡œ ë¦¬ìŠ¤íŠ¸ ì…€ë ‰íŠ¸
         
         System.out.println("listRoom size ::: " + listRoom.size());
         for(int i = 0; i < listRoom.size(); i++) {

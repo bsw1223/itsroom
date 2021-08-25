@@ -10,12 +10,13 @@ import com.nothouse.itsroom.entity.Room;
 import com.nothouse.itsroom.entity.RoomPK;
 
 public interface RoomRepository extends CrudRepository<Room, Long>{
-                                                    
-	List<Room> selByJibun(String jibun);            //Áö¹øÀ¸·Î roomlist ¼¿·¢Æ®
+     
 	
-	List<Room> selByRoomName(String roomName);      //roomNameÀ¸·Î roomlist ¼¿·¢Æ®
+	List<Room> findByJibun(String jibun);            //ì§€ë²ˆìœ¼ë¡œ roomlist ì…€ëž™íŠ¸
+	
+	List<Room> findByroomName(String roomName);      //roomNameìœ¼ë¡œ roomlist ì…€ëž™íŠ¸
 
 	@Query("select r from Room r where roomPK=:roomPK")
-	Room selRoomByPK(@Param("roomPK") RoomPK roomPK);  //pk·Î room ¼¿·¢Æ®
+	Room findRoom(@Param("roomPK") RoomPK roomPK);  //pkë¡œ room ì…€ëž™íŠ¸
 
 }

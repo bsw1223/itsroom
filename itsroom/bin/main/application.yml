@@ -2,10 +2,13 @@ server:
   port: 80
 spring:
   thymeleaf:
-    prefix: classpath:templates/itsroom/  #접두어 classpath:templates/ 가 default
+    prefix: classpath:templates/itsroom/  #�젒�몢�뼱 classpath:templates/ 媛� default
     suffix: .html
-    cache: false #개발 시 새로고침하면 적용
+    cache: false 
   jpa:
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    generate-ddl: true
     hibernate:
       ddl-auto: update
       use-new-id-generator-mappings: true

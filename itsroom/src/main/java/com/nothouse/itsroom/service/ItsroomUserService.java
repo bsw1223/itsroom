@@ -1,5 +1,6 @@
 package com.nothouse.itsroom.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -19,77 +20,77 @@ import com.nothouse.itsroom.repository.RoomRepository;
 
 @Service
 public class ItsroomUserService {
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //¿£Æ¼Æ¼¸Å´ÏÀú ÆÑÅä¸®
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("itsroomUnit"); //ì—”í‹°í‹°ë§¤ë‹ˆì € íŒ©í† ë¦¬
 
 	@Autowired
 	ItsroomUserRepository itsroomUserRepository;
 	
-	//param : ItsroomUserPK, ItsroomUser Å×ÀÌºí INSERT
+	//param : ItsroomUserPK, ItsroomUser í…Œì´ë¸” INSERT
     public void createItsroomUser(ItsroomUserPK itsroomUserPK) {
-		//ROOMÅ×ÀÌºí INSERT
-		EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-		EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+		//ROOMí…Œì´ë¸” INSERT
+		EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+		EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
 		try {
-			tx.begin();                                           //Æ®·£Á§¼Ç ½ÃÀÛ
+			tx.begin();                                           //íŠ¸ëœì ì…˜ ì‹œì‘
 			ItsroomUser itsroomUser     = new ItsroomUser();     //room entity      
 			itsroomUser.setIsroomUserPK(itsroomUserPK);         //PK SET
 		    em.persist(itsroomUserPK);
-		    tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+		    tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
 		}catch (Exception e) {
             System.out.println("createItsroomUser error :::  "+e.getMessage().toString());
 		}
-		em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+		em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
     }
 
-    //param : ItsroomUserPK, ItsroomUserÅ×ÀÌºí select
+    //param : ItsroomUserPK, ItsroomUserí…Œì´ë¸” select
     public ItsroomUser selectItsroomUser(ItsroomUserPK itsroomUserPK) {
-		EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-		EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+		EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+		EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
 		ItsroomUser itsroomUser  = new ItsroomUser();  
 		try {
         	tx.begin();     
-        	itsroomUser = itsroomUserRepository.selItsroomUserByPK(itsroomUserPK);
-        	tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+        	itsroomUser = itsroomUserRepository.finItsroomUser(itsroomUserPK);
+        	tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
         }catch (Exception e) {
         	System.out.println("selectItsroomUser error :::  "+e.getMessage().toString());
 		}
-		em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+		em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
 		
         return itsroomUser;
     }
     
-    //param : eMail, ItsroomUserÅ×ÀÌºí select list
+    //param : eMail, ItsroomUserí…Œì´ë¸” select list
     public List<ItsroomUser> selByeMail(String eMail) {
-    	EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-    	EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
-    	List<ItsroomUser> itsroomUserList      = null;
+    	EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+    	EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
+    	List<ItsroomUser> itsroomUserList = new ArrayList<ItsroomUser>();
     	try {
-    	    tx.begin();   //Æ®·£Á§¼Ç ½ÃÀÛ  
-    	    itsroomUserList = itsroomUserRepository.selByEmail(eMail);
-    	    tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+    	    tx.begin();   //íŠ¸ëœì ì…˜ ì‹œì‘  
+    	    itsroomUserList = itsroomUserRepository.findByEMail(eMail);
+    	    tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
     	}catch (Exception e) {
 			System.out.println("selectRoomList error :::  "+e.getMessage().toString());
 		}
     	
-    	em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+    	em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
     	
     	return itsroomUserList;
     }
     
-    //param : connectionPath, ItsroomUserÅ×ÀÌºí select list
+    //param : connectionPath, ItsroomUserí…Œì´ë¸” select list
     public List<ItsroomUser> selByJibun(String connectionPath) {
-    	EntityManager em         = emf.createEntityManager(); //¿£Æ¼Æ¼¸Å´ÏÀú
-    	EntityTransaction tx     = em.getTransaction();       //Æ®·£Á§¼Ç
+    	EntityManager em         = emf.createEntityManager(); //ì—”í‹°í‹°ë§¤ë‹ˆì €
+    	EntityTransaction tx     = em.getTransaction();       //íŠ¸ëœì ì…˜
     	List<ItsroomUser> itsroomUserList      = null;
     	try {
-    		tx.begin();   //Æ®·£Á§¼Ç ½ÃÀÛ  
-    		itsroomUserList = itsroomUserRepository.selByConnection(connectionPath);
-    		tx.commit();  //Æ®·£Á§¼Ç ´İ±â
+    		tx.begin();   //íŠ¸ëœì ì…˜ ì‹œì‘  
+    		itsroomUserList = itsroomUserRepository.findByConnectionPath(connectionPath);
+    		tx.commit();  //íŠ¸ëœì ì…˜ ë‹«ê¸°
     	}catch (Exception e) {
     		System.out.println("selectRoomList error :::  "+e.getMessage().toString());
     	}
     	
-    	em.close();   //¿£Æ¼Æ¼¸Å´ÏÀú ´İ±â
+    	em.close();   //ì—”í‹°í‹°ë§¤ë‹ˆì € ë‹«ê¸°
     	
     	return itsroomUserList;
     }

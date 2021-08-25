@@ -27,6 +27,8 @@ public class Room implements Serializable {
 	@Column( name = "BUILD_YEAR" )
 	private String buildYear;
 
+	
+	public Room() {};
     	
 	public RoomPK getRoomPK() {
 		return roomPK;

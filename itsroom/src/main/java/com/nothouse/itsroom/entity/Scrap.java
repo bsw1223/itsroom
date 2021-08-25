@@ -20,8 +20,8 @@ public class Scrap implements Serializable {
     private String roomName;   
 	
 	@Id
-	@Column( name = "EMAIL")
-	private String email;
+	@Column( name = "E_MAIL")
+	private String eMail;
 
 	@Column( name = "SCRAP_TIME")
     private String scrapTime;  
@@ -45,12 +45,13 @@ public class Scrap implements Serializable {
 	public void setScrapTime(String scrapTime) {
 		this.scrapTime = scrapTime;
 	}
-	public String getEmail() {
-		return email;
+	public String geteMail() {
+		return eMail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void seteMail(String eMail) {
+		this.eMail = eMail;
 	}
+
 	
 	
 	

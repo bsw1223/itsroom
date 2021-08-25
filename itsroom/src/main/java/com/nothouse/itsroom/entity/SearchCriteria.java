@@ -13,45 +13,45 @@ public class SearchCriteria implements Serializable {
 	
 	@Id
 	@Column( name = "SAVE_TIME" )
-    private String saveTime;           //'ÀúÀå½Ã°£'    
+    private String saveTime;           //'ì €ì¥ì‹œê°„'    
 	
 	@Id
 	@Column( name = "SCRAP_NAME" )
-    private String scrapName;          //'½ºÅ©·¦¸í'      
+    private String scrapName;          //'ìŠ¤í¬ë©ëª…'      
 	
 	@Id
 	@Column( name = "E_MAIL" )
-    private String eMail;              //'»ç¿ëÀÚÀÌ¸ŞÀÏ'     
+    private String eMail;              //'ì‚¬ìš©ìì´ë©”ì¼'     
 	
 	@Column( name = "ADDRESS1" )
-	private String address1;           //'ÁÖ¼Ò1'
+	private String address1;           //'ì£¼ì†Œ1'
 	
 	@Column( name = "ADDRESS2" )
-    private String address2;           //'ÁÖ¼Ò2'
+    private String address2;           //'ì£¼ì†Œ2'
 	
 	@Column( name = "ADDRESS_DETAIL" )
-    private String addressDetail;      //'»ó¼¼ÁÖ¼Ò'
+    private String addressDetail;      //'ìƒì„¸ì£¼ì†Œ'
 	
 	@Column( name = "PRIVATE_AREA" )
-    private String privateArea;        //'Àü¿ë¸éÀû'
+    private String privateArea;        //'ì „ìš©ë©´ì '
 	
 	@Column( name = "FLOOR" )
-    private String floor;              //'Ãş'
+    private String floor;              //'ì¸µ'
 	
 	@Column( name = "DEPOSIT" )
-    private String deposit;            //'º¸Áõ±İ'   
+    private String deposit;            //'ë³´ì¦ê¸ˆ'   
 	
 	@Column( name = "MONTHLY_RENT" )
-    private String monthlyRent;        //'¿ù¼¼'     
+    private String monthlyRent;        //'ì›”ì„¸'     
 	
 	@Column( name = "SUBWAY_LINE" )
-    private String subwayLine;         //'ÁöÇÏÃ¶È£¼±'  
+    private String subwayLine;         //'ì§€í•˜ì² í˜¸ì„ '  
 	
 	@Column( name = "SUBWAY_STATION" )
-    private String subwayStation;      //'ÁöÇÏÃ¶¿ªÀÌ¸§'     
+    private String subwayStation;      //'ì§€í•˜ì² ì—­ì´ë¦„'     
 	
 	@Column( name = "SUBWAY_DISTANCE" )
-    private String subwayDistance;     //'ÁöÇÏÃ¶°Å¸®'     
+    private String subwayDistance;     //'ì§€í•˜ì² ê±°ë¦¬'     
 	
 	
 	
