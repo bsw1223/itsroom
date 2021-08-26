@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>집이아니다.룸이다.</title>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff9235561b207be1d8ece09342578631"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    
+    <!-- bootStrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    
+    <!-- font-awsome -->
+    <link href="/fontawesome/css/all.css" rel="stylesheet"> <!--load all styles -->
+</head>
+
+<body>
+	<div id="app">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fw-bold">
+			<div class="container-fluid">
+			    <!--  햄버거 버튼  -->
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent2"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+				    <span><i class="fas fa-bars"></i></span>
+				</button>
+<!-- 				<button class="navbar-toggler" type="button" -->
+<!-- 					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" -->
+<!-- 					aria-controls="navbarSupportedContent" aria-expanded="false" -->
+<!-- 					aria-label="Toggle navigation"> -->
+<!-- 				    <span><i class="fas fa-bars"></i></span> -->
+<!-- 				</button> -->
+				집이 아니다 룸이다
+                <!-- 검색 버튼  -->
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+                   <i class="fas fa-search"></i>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			    	<hr>
+						<li class="nav-item">
+						  <div class="row">
+						    <div class="col col-3">
+						      <a class="nav-link active" aria-current="page" href="#">지역</a>
+						    </div>
+						    <div class="col">
+                              <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="시, 군, 구">
+                              <datalist id="datalistOptions">
+                                <option value="San Francisco">
+                                <option value="New York">
+                                <option value="Seattle">
+                                <option value="Los Angeles">
+                                <option value="Chicago">
+                              </datalist>
+                            </div>  
+                            <div class="col">
+	                          <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="동, 면, 리">
+                                <datalist id="datalistOptions">
+                                  <option value="San Francisco">
+                                  <option value="New York">
+                                  <option value="Seattle">
+                                  <option value="Los Angeles">
+                                  <option value="Chicago">
+                                </datalist>
+                            </div>  	
+                          </div>
+					    </li>
+						<li class="nav-item">
+						  <div class="row">
+						    <div class="col col-3">
+						      <a class="nav-link active" aria-current="page" href="#">전용면적</a>
+						    </div>
+						    <div class="col">
+						      <select class="form-select col-6" aria-label="Default select example">
+                                <option selected>전용면적</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </div>  	
+                          </div>
+					    </li>
+							
+						<li class="nav-item">
+                          <div class="row">
+						    <div class="col col-3">
+						      <a class="nav-link active" aria-current="page" href="#">층</a>
+						    </div>
+						    <div class="col">
+						      <select class="form-select" aria-label="Default select example">
+                                <option selected>층</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>	
+                            </div>
+                          </div>    
+					    </li>	
+							
+							
+						<li class="nav-item">
+                          <div class="row">
+						    <div class="col col-3">
+						      <a class="nav-link active" aria-current="page" href="#">보증금</a>
+						    </div>
+						    <div class="col">
+						      <select class="form-select" aria-label="Default select example">
+                                <option selected>보증금</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>	
+                            </div>
+                          </div>    
+					    </li>
+							
+							
+						<li class="nav-item">
+                          <div class="row">
+						    <div class="col col-3">
+						      <a class="nav-link active" aria-current="page" href="#">월세</a>
+						    </div>
+						    <div class="col">
+						      <select class="form-select" aria-label="Default select example">
+                                <option selected>월세</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>	
+                            </div>
+                          </div>    
+					    </li>	
+						
+						<li class="nav-item">
+						  <div class="col col-3">
+						    <a class="nav-link active" aria-current="page" href="#">지하철</a>
+						  </div>
+						</li>
+						<li class="nav-item">
+						  <div class="row">
+						    <div class="col">
+                              <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="호선">
+                              <datalist id="datalistOptions">
+                                <option value="San Francisco">
+                                <option value="New York">
+                                <option value="Seattle">
+                                <option value="Los Angeles">
+                                <option value="Chicago">
+                              </datalist>
+                            </div>  
+                            <div class="col">
+	                          <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="역이름">
+                                <datalist id="datalistOptions">
+                                  <option value="San Francisco">
+                                  <option value="New York">
+                                  <option value="Seattle">
+                                  <option value="Los Angeles">
+                                  <option value="Chicago">
+                                </datalist>
+                            </div>  	
+                            <div class="col">
+	                          <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="거리">
+                                <datalist id="datalistOptions">
+                                  <option value="San Francisco">
+                                  <option value="New York">
+                                  <option value="Seattle">
+                                  <option value="Los Angeles">
+                                  <option value="Chicago">
+                                </datalist>
+                            </div>  	
+                          </div>
+					    </li>		
+			            <hr>
+			            <li class="nav-item">
+                        <div class="col-12 mx-auto">
+			                  <button type="button" class="btn btn-primary btn-primary">검색조건저장</button>
+			                  <button type="button" class="btn btn-danger btn-primary">&nbsp&nbsp&nbsp  취소 &nbsp&nbsp&nbsp </button>
+			                  <button type="button" class="btn btn-success btn-primary">&nbsp&nbsp&nbsp  검색  &nbsp&nbsp&nbsp&nbsp</button>
+		                </div>
+		                </ul>
+				</div>
+			</div>
+			
+			
+			
+			    <!-- 햄버거버튼클릭 -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent2">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			    	<hr>
+						<li class="nav-item "><a class="nav-link active mx-3" aria-current="page" href="#">저장된 검색조건</a></li>
+					<hr>
+						<li class="nav-item"><a class="nav-link active mx-3" aria-current="page" href="#">스크랩 함</a></li>
+					<hr>
+						<li class="nav-item"><a class="nav-link active mx-3" aria-current="page" href="#">최근 본 룸</a></li>
+					<hr>
+						<li class="nav-item"><a class="nav-link active mx-3" aria-current="page" href="#">현위치 기준 룸 스크랩 순위</a></li>
+		            </ul>
+			        <hr>
+			        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+			        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+			        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-danger float-right">로그아웃 </button>
+				</div>
+			
+			
+			
+			</ul>
+		</nav>
+		{{ message }}
+	</div>
+	<div id="map" style="width:375px;height:700px;"></div>
+    
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: null
+            },
+            create: function(){
+            	 map.relayout();
+            }
+        })
+        /**
+         * 지도 스크립트
+         */
+        var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+        var options = { //지도를 생성할 때 필요한 기본 옵션
+            center: new kakao.maps.LatLng(37.5642135, 127.0016985), //지도의 중심좌표.
+            level: 3 //지도의 레벨(확대, 축소 정도)
+        };
+
+        var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 10 // 지도의 확대 레벨 
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+        if (navigator.geolocation) {
+
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                var lat = position.coords.latitude, // 위도
+                    lon = position.coords.longitude; // 경도
+
+                var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+                    message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+
+                // 마커와 인포윈도우를 표시합니다
+                displayMarker(locPosition, message);
+
+            });
+
+        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+            var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
+                message = 'geolocation을 사용할수 없어요..'
+
+            displayMarker(locPosition, message);
+        }
+
+        // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+        function displayMarker(locPosition, message) {
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: locPosition
+            });
+
+            var iwContent = message, // 인포윈도우에 표시할 내용
+                iwRemoveable = true;
+
+            // 인포윈도우를 생성합니다
+            var infowindow = new kakao.maps.InfoWindow({
+                content: iwContent,
+                removable: iwRemoveable
+            });
+
+            // 인포윈도우를 마커위에 표시합니다 
+            infowindow.open(map, marker);
+
+            // 지도 중심좌표를 접속위치로 변경합니다
+            map.setCenter(locPosition);
+        }
+
+        var map = new kakao.maps.Map(container, options),
+manager = new kakao.maps.drawing.DrawingManager({
+    map: map,
+    drawingMode: [
+        kakao.maps.drawing.OverlayType.MARKER
+    ],
+    markerOptions: {
+        draggable: true,
+        removable: true,
+        markerImages: [
+            null, // API에서 제공하는 기본 마커 이미지
+            {
+                src: 'https://t1.daumcdn.net/localimg/localimages/07/2009/map/icon/ico_mn_13.png',
+                width: 31,
+                height: 35,
+                shape: 'rect',
+                coords: '0,0,31,35',
+                hoverImage: {
+                    src: 'https://t1.daumcdn.net/localimg/localimages/07/2012/img/marker_normal.png',
+                    width: 33,
+                    height: 36,
+                    offsetX: 12,
+                    offsetY: 36,
+                    spriteWidth: 644,
+                    spriteHeight: 946,
+                    spriteOriginX: 10,
+                    spriteOriginY: 10
+                },
+                dragImage: {
+                    src: 'https://t1.daumcdn.net/localimg/localimages/07/2012/attach/pc_img/ico_comm.png',
+                    width : 20, // 마커 크기
+                    height : 20, // 마커 크기
+                    offsetX : 10, // 지도에 고정시킬 이미지 내 위치 좌표
+                    offsetY : 20, // 지도에 고정시킬 이미지 내 위치 좌표
+                    spriteWidth : 118, // 이미지 전체 크기
+                    spriteHeight : 111, // 이미지 전체 크기
+                    spriteOriginX : 0, // 이미지 중 마커로 사용할 위치
+                    spriteOriginY : 90 // 이미지 중 마커로 사용할 위치
+                }
+            }
+        ]
+    }
+});
+    </script>
+</body>
+
+</html>

@@ -48,5 +48,9 @@ public class itsroomController {
 	public String itsroom2(Model model) {
 		return "itsroom2";
 	}
+	@GetMapping("itsroom3")
+	public String itsroom3(Model model) {
+		return "itsroom3";
+	}
 }
 
